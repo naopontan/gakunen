@@ -9,4 +9,8 @@ class GakunenTest < Minitest::Test
     assert_equal '小3', Gakunen.gakunen(Date.civil(2009, 2, 24), Date.civil(2018, 2, 26))
     assert_equal '小5', Gakunen.gakunen(Date.civil(2006, 9, 15), Date.civil(2018, 2, 26))
   end
+
+  def test_cornercase
+    assert_equal '小3', Gakunen.gakunen(Date.civil(2009, 2, 24), Date.civil(2018, 2, 23)) # FIXME: Logic書け!
+  end
 end
