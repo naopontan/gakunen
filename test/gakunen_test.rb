@@ -6,6 +6,6 @@ class GakunenTest < Minitest::Test
   end
 
   def test_it_does_something_useful
-    assert false
+    assert_equal '小3', Gakunen.gakunen(Date.civil(2009, 2, 24), Date.civil(2018, 2, 26))
   end
 end

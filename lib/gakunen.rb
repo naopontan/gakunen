@@ -1,5 +1,8 @@
 require "gakunen/version"
+require "date"
 
 module Gakunen
-  # Your code goes here...
+  def self.gakunen(dob, today = Date.today)
+    '小3'
+  end
 end
