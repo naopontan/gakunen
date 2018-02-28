@@ -8,6 +8,7 @@ require "date"
 
 
 module Gakunen
+  # FIXME: 小1 は 6 が良い。なぜなら 7 は小1と小2で曖昧だから
   TABLE = {
     7 =>  '小1',
     8 =>  '小2',
