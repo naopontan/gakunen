@@ -63,4 +63,8 @@ class GakunenTest < Minitest::Test
     assert_nil Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2000, 3, 31)), '生まれていない'
   end
 
+  def test_adult
+    assert_nil Gakunen.gakunen(Date.civil(1968, 11, 10), Date.civil(2000, 3, 31)), '学生じゃない'
+  end
+
 end
