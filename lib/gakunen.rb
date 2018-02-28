@@ -8,14 +8,13 @@ require "date"
 
 
 module Gakunen
-  # FIXME: 小1 は 6 が良い。なぜなら 7 は小1と小2で曖昧だから
   TABLE = {
-    7 =>  '小1',
-    8 =>  '小2',
-    9 =>  '小3',
-    10 => '小4',
-    11 => '小5',
-    12 => '小6',
+    6 =>  '小1',
+    7 =>  '小2',
+    8 =>  '小3',
+    9 => '小4',
+    10 => '小5',
+    11 => '小6',
   }
 
   # 早生まれ?
@@ -23,8 +22,15 @@ module Gakunen
     (1..3).include?(dob.month) || (dob.month == 4 && dob.day == 1)
   end
 
+  # 年度
+  def self.nendo(date)
+    (1..3).include?(date.month) ? date.year - 1 : date.year
+  end
+
+  # 学年
   def self.gakunen(dob, today = Date.today)
-    n = age(dob, Date.civil(today.year, 4, 1))  # 4/2 時点での年齢
+    n = age(dob, today)
+    n -= 1 if (1..3).include?(today.month)
     TABLE[n]
   end
 

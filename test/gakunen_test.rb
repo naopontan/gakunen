@@ -22,7 +22,7 @@ class GakunenTest < Minitest::Test
   #  - 学年 → 4/1 に始まり翌年の 3/31 まで
   #  - 一学年は 4/2 生まれ～翌年の 4/1 生まれまでの子で構成される
   def test_cornercase
-    assert_equal '小3', Gakunen.gakunen(@rika, Date.civil(2018, 2, 23)), 'リカ'
+    assert_equal '小3', Gakunen.gakunen(@rika, Date.civil(2018, 2, 28)), 'リカ'
   end
 
   def test_age
