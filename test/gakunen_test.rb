@@ -13,8 +13,10 @@ class GakunenTest < Minitest::Test
   end
 
   def test_sample_case
-    assert_equal '小3', Gakunen.gakunen(@rika, Date.civil(2018, 2, 26))
-    assert_equal '小5', Gakunen.gakunen(@haru, Date.civil(2018, 2, 26))
+    today = Date.civil(2018, 2, 26)
+    assert_equal '小3', Gakunen.gakunen(@rika, today)
+    assert_equal '小5', Gakunen.gakunen(@haru, today)
+    assert_equal '中2', Gakunen.gakunen(@leo, today)  # FIXME: ここでエラー!
   end
 
   # http://www.mext.go.jp/a_menu/shotou/shugaku/detail/1309966.htm
@@ -35,6 +37,10 @@ class GakunenTest < Minitest::Test
     assert_equal 7, Gakunen.age(@rika, Date.civil(2016, 2, 28)), '1年生'
     assert_equal 8, Gakunen.age(@rika, Date.civil(2017, 2, 28)), '2年生'
     assert_equal 9, Gakunen.age(@rika, Date.civil(2018, 2, 28)), '3年生'
+  end
+
+  def test_leo_age
+    assert_equal 13, Gakunen.age(@leo, Date.civil(2018, 2, 28)), '中2'
   end
 
   def test_list
