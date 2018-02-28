@@ -37,7 +37,7 @@ module Gakunen
 
   # 学年
   def self.gakunen(dob, today = Date.today)
-    n = age(dob, today)
+    n = age(dob, Date.civil(today.year, 4)) # 基点に寄せる. 学年は 4/1 から始まるから
     n -= 1 if (1..3).include?(today.month)
     TABLE[n]
   end

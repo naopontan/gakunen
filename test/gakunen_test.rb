@@ -16,7 +16,7 @@ class GakunenTest < Minitest::Test
     today = Date.civil(2018, 2, 26)
     assert_equal '小3', Gakunen.gakunen(@rika, today)
     assert_equal '小5', Gakunen.gakunen(@haru, today)
-    assert_equal '中2', Gakunen.gakunen(@leo, today)  # FIXME: ここでエラー!
+    assert_equal '中2', Gakunen.gakunen(@leo, today)
   end
 
   # http://www.mext.go.jp/a_menu/shotou/shugaku/detail/1309966.htm
