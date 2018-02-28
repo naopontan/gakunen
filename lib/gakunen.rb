@@ -23,8 +23,7 @@ module Gakunen
   end
 
   def self.gakunen(dob, today = Date.today)
-    n = age(dob, Date.civil(today.year, 4, 2))  # 4/2 時点での年齢
-    n += 1 if hayaumare?(dob)
+    n = age(dob, Date.civil(today.year, 4, 1))  # 4/2 時点での年齢
     TABLE[n]
   end
 

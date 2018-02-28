@@ -2,7 +2,6 @@ require 'test_helper'
 
 class GakunenTest < Minitest::Test
 
-=begin
   def test_that_it_has_a_version_number
     refute_nil ::Gakunen::VERSION
   end
@@ -24,12 +23,11 @@ class GakunenTest < Minitest::Test
     assert 7, Gakunen.age(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1))
     assert 6, Gakunen.age(Date.civil(2000, 4, 1), Date.civil(2006, 4, 1))
   end
-=end
 
   def test_list
     # 1999/4/2 ～ 2000/4/1 が 2006に入学
-#    assert_equal '小1', Gakunen.gakunen(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1)), '7才で一年生'
-    assert_equal '小1', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2006, 4, 1)), '6才で一年生. 早生まれ' # FIXME: ここ通すロジック書け
+    assert_equal '小1', Gakunen.gakunen(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1)), '7才で一年生'
+    assert_equal '小1', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2006, 4, 1)), '6才で一年生. 早生まれ'
   end
 
 end
