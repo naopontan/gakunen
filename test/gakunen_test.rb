@@ -26,8 +26,8 @@ class GakunenTest < Minitest::Test
 
   def test_list
     # 1999/4/2 ～ 2000/4/1 が 2006に入学
-    assert_equal '小1', Gakunen.gakunen(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1))
-#    assert_equal '小1', Gakunen.gakunen(Dte.civil(2000, 4, 1), Date.civil(2006, 4, 1))
+    assert_equal '小1', Gakunen.gakunen(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1)), '7才で一年生'
+    assert_equal '小1', Gakunen.gakunen(Dte.civil(2000, 4, 1), Date.civil(2006, 4, 1)), '6才で一年生. 早生まれ' # FIXME: ここ通すロジック書け
   end
 
 end
