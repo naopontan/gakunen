@@ -49,4 +49,16 @@ class GakunenTest < Minitest::Test
     assert_equal '小1', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2006, 4, 1)), '6才で一年生. 早生まれ'
   end
 
+  def test_under5
+    assert_equal '年長', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2005, 4, 1))
+    assert_equal '年中', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2004, 4, 1))
+    assert_equal '年少', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2003, 4, 1))
+
+    assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2002, 4, 1))
+    assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2001, 4, 1))
+    assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2000, 4, 1)), '産まれた日に保育所とかあり得ないけど、とりあえず'
+
+    assert_nil Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(1999, 4, 1)), '生まれていない'
+  end
+
 end
