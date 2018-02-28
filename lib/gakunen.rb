@@ -17,6 +17,11 @@ module Gakunen
     12 => '小6',
   }
 
+  # 早生まれ?
+  def self.hayaumare?(dob)
+    (1..3).include? dob.month || (dob.month == 4 && dob.day == 1)
+  end
+
   def self.gakunen(dob, today = Date.today)
     n = age(dob, Date.civil(today.year, 4, 2))  # 4/2 時点での年齢
     TABLE[n]
