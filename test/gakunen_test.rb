@@ -57,8 +57,10 @@ class GakunenTest < Minitest::Test
     assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2002, 4, 1))
     assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2001, 4, 1))
     assert_equal '保育所', Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2000, 4, 1)), '産まれた日に保育所とかあり得ないけど、とりあえず'
+  end
 
-    assert_nil Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(1999, 4, 1)), '生まれていない'
+  def test_not_born
+    assert_nil Gakunen.gakunen(Date.civil(2000, 4, 1), Date.civil(2000, 3, 31)), '生まれていない'
   end
 
 end
