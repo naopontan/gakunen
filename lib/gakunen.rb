@@ -1,12 +1,6 @@
 require "gakunen/version"
 require "date"
 
-# TODO: 以下の3行を実現したい
-require 'date/age'
-#require 'date/nendo'
-#require 'date/gakunen'
-
-
 =begin
 # https://ja.wikipedia.org/wiki/%E5%AD%A6%E9%BD%A2
 学年早見表
@@ -37,19 +31,6 @@ require 'date/age'
 22歳～23歳  1年。5年  修士課程。医科大学、獣医学部、薬学科
 23歳～24歳  2年。6年  修士課程。医科大学、獣医学部、薬学科
 =end
-module Gakunen
-
-  # 早生まれ?
-  def self.hayaumare?(dob)
-    (1..3).include?(dob.month) || (dob.month == 4 && dob.day == 1)
-  end
-
-  # 年度
-  def self.nendo(date)
-    (1..3).include?(date.month) ? date.year - 1 : date.year
-  end
-
-end
 
 class Date
   TABLE = {
@@ -92,6 +73,24 @@ class Date
     n = self.age(Date.civil(today.year, 4)) # 基点に寄せる. 学年は 4/1 から始まるから
     n -= 1 if (1..3).include?(today.month)
     TABLE[n]
+  end
+
+  # 早生まれ?
+  def self.hayaumare?(dob)
+    (1..3).include?(dob.month) || (dob.month == 4 && dob.day == 1)
+  end
+
+  # 年度
+  def self.nendo(date)
+    (1..3).include?(date.month) ? date.year - 1 : date.year
+  end
+
+  # 満年齢
+  def age(today)
+    #x = today.year - self.year
+    #(today >= self >> 12 * x) ? x : x - 1  # 演算子優先度は *, >>, >= の順
+
+    today.year - year - ((today.month > month || (today.month == month && today.day >= day)) ? 0 : 1)
   end
 
 end
