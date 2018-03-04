@@ -2,7 +2,7 @@ require "gakunen/version"
 require "date"
 
 # TODO: 以下の3行を実現したい
-#require 'date/age'
+require 'date/age'
 #require 'date/nendo'
 #require 'date/gakunen'
 
