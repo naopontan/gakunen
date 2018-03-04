@@ -1,8 +1,8 @@
 require "gakunen/version"
 require "date"
 
-require 'date/age'
 # TODO: 以下の3行を実現したい
+require 'date/age'
 #require 'date/nendo'
 #require 'date/gakunen'
 
@@ -38,6 +38,20 @@ require 'date/age'
 23歳～24歳  2年。6年  修士課程。医科大学、獣医学部、薬学科
 =end
 module Gakunen
+
+  # 早生まれ?
+  def self.hayaumare?(dob)
+    (1..3).include?(dob.month) || (dob.month == 4 && dob.day == 1)
+  end
+
+  # 年度
+  def self.nendo(date)
+    (1..3).include?(date.month) ? date.year - 1 : date.year
+  end
+
+end
+
+class Date
   TABLE = {
     0 =>  '保育所',
     1 =>  '保育所',
@@ -72,27 +86,12 @@ module Gakunen
     23 => '修士課程2',
   }
 
-  # 早生まれ?
-  def self.hayaumare?(dob)
-    (1..3).include?(dob.month) || (dob.month == 4 && dob.day == 1)
-  end
-
-  # 年度
-  def self.nendo(date)
-    (1..3).include?(date.month) ? date.year - 1 : date.year
-  end
-
   # 学年
   # 小1以上は厳密に求める。小1未満も面倒臭いので小1以上のロジックと合わせる
-  def self.gakunen(dob, today = Date.today)
-    n = age(dob, Date.civil(today.year, 4)) # 基点に寄せる. 学年は 4/1 から始まるから
+  def gakunen(today = Date.today)
+    n = self.age(Date.civil(today.year, 4)) # 基点に寄せる. 学年は 4/1 から始まるから
     n -= 1 if (1..3).include?(today.month)
     TABLE[n]
   end
 
-  # 満年齢
-  def self.age(dob, today)
-    x = today.year - dob.year
-    (today >= dob >> 12 * x) ? x : x - 1  # 演算子優先度は *, >>, >= の順
-  end
 end
