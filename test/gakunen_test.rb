@@ -27,23 +27,6 @@ class GakunenTest < Minitest::Test
     assert_equal '小3', Gakunen.gakunen(@rika, Date.civil(2018, 2, 28))
   end
 
-  def test_age
-    assert_equal 6, Date.civil(1999, 4, 2).age(Date.civil(2006, 4, 1))
-    assert_equal 6, Date.civil(1999, 4, 2).age(Date.civil(2006, 4, 1))
-    assert_equal 6, Date.civil(2000, 4, 1).age(Date.civil(2006, 4, 1))
-  end
-
-  def test_rika_age
-    assert_equal 6, @rika.age(Date.civil(2015, 2, 28))
-    assert_equal 7, @rika.age(Date.civil(2016, 2, 28)), '1年生'
-    assert_equal 8, @rika.age(Date.civil(2017, 2, 28)), '2年生'
-    assert_equal 9, @rika.age(Date.civil(2018, 2, 28)), '3年生'
-  end
-
-  def test_leo_age
-    assert_equal 13, @leo.age(Date.civil(2018, 2, 28)), '中2'
-  end
-
   def test_list
     # 1999/4/2 ～ 2000/4/1 が 2006に入学
     assert_equal '小1', Gakunen.gakunen(Date.civil(1999, 4, 2), Date.civil(2006, 4, 1)), '7才で一年生'
