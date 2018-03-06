@@ -25,4 +25,20 @@ class AgeTest < Minitest::Test
     assert_equal 13, @leo.age(Date.civil(2018, 2, 28)), '中2'
   end
 
+  def test_not_born
+    assert_nil @leo.age(Date.civil(2004, 3, 23))
+  end
+
+  # うるう年 / 閏年
+  def test_uruudosi
+    skytree = Date.civil(2012, 2, 29) # 東京スカイツリー
+
+    assert_equal 0, skytree.age(Date.civil(2012, 2, 29))
+
+    assert_equal 0, skytree.age(Date.civil(2013, 2, 27))
+    assert_equal 0, skytree.age(Date.civil(2013, 2, 28))  # 「みなし誕生日」ならここで 1歳
+    assert_raises(ArgumentError) { Date.civil(2013, 2, 29) }  # ivalid date
+    assert_equal 1, skytree.age(Date.civil(2013, 3,  1))  # 2013.2.28の 24時に1歳
+  end
+
 end
