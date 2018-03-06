@@ -1,4 +1,4 @@
-require "gakunen/version"
+require_relative "gaunen/version"
 require "date"
 
 =begin
