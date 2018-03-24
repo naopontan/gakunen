@@ -87,7 +87,7 @@ class Date
 
   # 満年齢
   # うるう年の場合: 3/1 で加齢とする(「みなし誕生日」の 2/28 ではない)
-  def age(today)
+  def age(today = Date.today)
     return if self > today
     #x = today.year - self.year
     #(today >= self >> 12 * x) ? x : x - 1  # 演算子優先度は *, >>, >= の順
