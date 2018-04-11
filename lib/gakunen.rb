@@ -32,7 +32,7 @@ require "date"
 23歳～24歳  2年。6年  修士課程。医科大学、獣医学部、薬学科
 =end
 
-class Date
+module Gakunen
   TABLE = {
     0 =>  '保育所',
     1 =>  '保育所',
@@ -94,5 +94,8 @@ class Date
 
     today.year - year - ((today.month > month || (today.month == month && today.day >= day)) ? 0 : 1)
   end
+end
 
+class Date
+  include Gakunen
 end
