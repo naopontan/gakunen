@@ -1,0 +1,13 @@
+# c.f. https://docs.github.com/ja/free-pro-team@latest/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "bundler"
+    directory: "/"
+    # allow:
+    #   - dependency-type: "all"
+    assignees:
+      - "naopontan"
+    schedule:
+      interval: "daily"
+      timezone: "Asia/Tokyo"
+      time: "23:55"
